@@ -4,7 +4,7 @@
 }
 
 body {
-  background: #f4f6f8;
+   background: #eef2f6;
   padding: 30px;
 }
 
@@ -15,11 +15,13 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-top: 6px solid #003366;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 20px;
+  color: #003366;
 }
 
 .search-box {
@@ -31,24 +33,29 @@ h2 {
   flex: 1;
   padding: 10px;
   font-size: 14px;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
 }
 
 .search-box button {
   padding: 10px 16px;
   border: none;
-  background: #007bff;
   color: white;
   cursor: pointer;
-  border-radius: 5px;
+  background: #003366;
+  border-radius: 6px;
 }
 
 .search-box button:hover {
-  background: #0056b3;
+   background: #002244;
 }
 
 .todo {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
+  background: #f9fbfd;
+  padding: 14px;
+  border-radius: 8px;
+  border-left: 5px solid #003366;
+  margin-bottom: 12px;
 }
 
 .todo:last-child {
@@ -56,8 +63,11 @@ h2 {
 }
 
 .todo h4 {
-  margin: 0;
-  font-size: 14px;
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
 }
 
 .status {
@@ -66,17 +76,52 @@ h2 {
 }
 
 .completed {
-  color: green;
+  background: #e6f4ea;
+  color: #1e7e34;
 }
 
 .pending {
-  color: red;
+  background: #fff3cd;
+  color: #856404;
 }
 
 .empty {
   text-align: center;
   color: #888;
   margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background: #003366;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #cfd8e3;
+  text-align: left;
+  font-size: 14px;
+}
+
+.completed {
+  color: #1e7e34;
+  font-weight: bold;
+}
+
+.pending {
+  color: #856404;
+  font-weight: bold;
+}
+
+.empty {
+  text-align: center;
+  color: #888;
 }
 
 /* Mobile */
@@ -120,5 +165,10 @@ h2 {
 
   .status {
     font-size: 13px;
+  }
+   table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }

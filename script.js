@@ -1,58 +1,63 @@
-const API_URL = "https://jsonplaceholder.typicode.com/todos"; 
-
+const API_URL = "https://jsonplaceholder.typicode.com/todos";
 
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 const resultsDiv = document.getElementById("results");
 
-// Fetch data from API
-async function fetchTodos() {
+let allTodos = [];
+
+// Load data automatically
+async function loadTodos() {
   const response = await fetch(API_URL);
-  const data = await response.json();
-  return data;
+  allTodos = await response.json();
+  displayTodos(allTodos); // show data below table header
 }
 
-
-//Display
+// Display rows inside table
 function displayTodos(todos) {
   resultsDiv.innerHTML = "";
 
   if (todos.length === 0) {
-    resultsDiv.innerHTML = "<p>No results found</p>";
+    resultsDiv.innerHTML = `
+      <tr>
+        <td colspan="4" class="empty">No results found</td>
+      </tr>
+    `;
     return;
   }
 
   todos.forEach(todo => {
-    const div = document.createElement("div");
-    div.className = "todo-card";
+    const row = document.createElement("tr");
 
-    div.innerHTML = `
-      <p><strong>ID:</strong> ${todo.id}</p>
-      <p><strong>Title:</strong> ${todo.title}</p>
-      <p class="${todo.completed ? 'completed' : 'pending'}">
-        Status: ${todo.completed ? "Completed" : "Pending"}
-      </p>
+    row.innerHTML = `
+      <td>${todo.id}</td>
+      <td>${todo.userId}</td>
+      <td>${todo.title}</td>
+      <td class="${todo.completed ? "completed" : "pending"}">
+        ${todo.completed ? "Completed" : "Pending"}
+      </td>
     `;
 
-    resultsDiv.appendChild(div);
+    resultsDiv.appendChild(row);
   });
 }
 
-//Search 
-searchBtn.addEventListener("click", async () => {
+// Search filter
+searchBtn.addEventListener("click", () => {
   const query = searchInput.value.trim().toLowerCase();
 
   if (query === "") {
-    alert("Please enter ID or title");
+    displayTodos(allTodos);
     return;
   }
 
-  const todos = await fetchTodos();
-
-  const filteredTodos = todos.filter(todo =>
-    todo.id.toString() === query ||
+  const filtered = allTodos.filter(todo =>
+    todo.id.toString().includes(query) ||
     todo.title.toLowerCase().includes(query)
   );
 
-  displayTodos(filteredTodos);
+  displayTodos(filtered);
 });
+
+
+loadTodos();
