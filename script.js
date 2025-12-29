@@ -6,14 +6,13 @@ const resultsDiv = document.getElementById("results");
 
 let allTodos = [];
 
-// Load data automatically
+// Load data 
 async function loadTodos() {
   const response = await fetch(API_URL);
   allTodos = await response.json();
-  displayTodos(allTodos); // show data below table header
+  displayTodos(allTodos); 
 }
 
-// Display rows inside table
 function displayTodos(todos) {
   resultsDiv.innerHTML = "";
 
@@ -26,6 +25,7 @@ function displayTodos(todos) {
     return;
   }
 
+  //Fetch
   todos.forEach(todo => {
     const row = document.createElement("tr");
 
@@ -47,14 +47,21 @@ searchBtn.addEventListener("click", () => {
   const query = searchInput.value.trim().toLowerCase();
 
   if (query === "") {
-    displayTodos(allTodos);
+    displayTodos([]);
     return;
   }
-
-  const filtered = allTodos.filter(todo =>
-    todo.id.toString().includes(query) ||
-    todo.title.toLowerCase().includes(query)
-  );
+  
+  let filtered = [];
+  if (!isNaN(query)) {
+    filtered = allTodos.filter(todo =>
+      todo.id === Number(query)
+    );
+  } 
+  else {
+    filtered = allTodos.filter(todo =>
+      todo.title.toLowerCase().includes(query)
+    );
+  }
 
   displayTodos(filtered);
 });
