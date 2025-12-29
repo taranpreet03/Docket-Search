@@ -1,60 +1,80 @@
 * {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: #2381aa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  background: #f4f6f8;
+  padding: 30px;
 }
 
-.docket-widget {
-    background: #ffffff;
-    padding: 25px;
-    width: 320px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+.widget {
+  max-width: 500px;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.docket-widget h2 {
-    margin-bottom: 15px;
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.docket-widget input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.search-box {
+  display: flex;
+  gap: 10px;
 }
 
-.docket-widget button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    color: #f8f1f1;
-    border-radius: 4px;
-    cursor: pointer;
+.search-box input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
 }
 
-.docket-widget button:hover {
-    background-color: #0056b3;
+.search-box button {
+  padding: 10px 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-#result {
-    margin-top: 15px;
-    font-size: 14px;
+.search-box button:hover {
+  background: #0056b3;
 }
 
-.success {
-    color: green;
+.todo {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
 }
 
-.error {
-    color: red;
+.todo:last-child {
+  border-bottom: none;
+}
+
+.todo h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.status {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.completed {
+  color: green;
+}
+
+.pending {
+  color: red;
+}
+
+.empty {
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
 }
