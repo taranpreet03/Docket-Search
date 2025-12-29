@@ -24,7 +24,7 @@ h2 {
   color: #003366;
 }
 
-.search-box {
+/* .search-box {
   display: flex;
   gap: 10px;
 }
@@ -48,7 +48,7 @@ h2 {
 
 .search-box button:hover {
    background: #002244;
-}
+} */
 
 .todo {
   background: #f9fbfd;
@@ -122,6 +122,48 @@ th, td {
 .empty {
   text-align: center;
   color: #888;
+}
+
+/* pagination */
+.pagination {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  justify-content: center;
+  padding: 0;
+}
+
+.page-item {
+  border-radius: 6px;
+}
+
+.page-link {
+  display: block;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.page-link:hover {
+  background-color: #003366;
+  color: #fff;
+  border-color: #003366;
+}
+
+.page-item.active .page-link {
+  background-color: #003366;
+  color: white;
+  border-color:#003366;
+}
+
+.page-item.disabled .page-link {
+  color: #aaa;
+  pointer-events: none;
+  border-color: #eee;
 }
 
 /* Mobile */

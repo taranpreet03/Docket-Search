@@ -1,6 +1,6 @@
 const API_URL = "https://jsonplaceholder.typicode.com/todos";
 
-const searchBtn = document.getElementById("searchBtn");
+// const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 const resultsDiv = document.getElementById("results");
 
@@ -43,20 +43,24 @@ function displayTodos(todos) {
 }
 
 // Search filter
-searchBtn.addEventListener("click", () => {
+searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim().toLowerCase();
 
+  // If input is empty, show all data
   if (query === "") {
-    displayTodos([]);
+    displayTodos(allTodos);
     return;
   }
-  
+
   let filtered = [];
+
+  // Search by ID
   if (!isNaN(query)) {
     filtered = allTodos.filter(todo =>
       todo.id === Number(query)
     );
   } 
+  // Search by title
   else {
     filtered = allTodos.filter(todo =>
       todo.title.toLowerCase().includes(query)
@@ -65,6 +69,7 @@ searchBtn.addEventListener("click", () => {
 
   displayTodos(filtered);
 });
+
 
 
 loadTodos();
