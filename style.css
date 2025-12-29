@@ -78,3 +78,47 @@ h2 {
   color: #888;
   margin-top: 20px;
 }
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  body {
+    padding: 15px;
+  }
+
+  .widget {
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-box input,
+  .search-box button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .search-box button {
+    padding: 12px;
+  }
+
+  .todo {
+    padding: 14px 10px;
+  }
+
+  .todo h4 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .status {
+    font-size: 13px;
+  }
+}
