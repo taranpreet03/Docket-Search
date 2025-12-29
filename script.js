@@ -12,6 +12,7 @@ async function fetchTodos() {
   return data;
 }
 
+
 //Display
 function displayTodos(todos) {
   resultsDiv.innerHTML = "";
@@ -36,3 +37,22 @@ function displayTodos(todos) {
     resultsDiv.appendChild(div);
   });
 }
+
+//Search 
+searchBtn.addEventListener("click", async () => {
+  const query = searchInput.value.trim().toLowerCase();
+
+  if (query === "") {
+    alert("Please enter ID or title");
+    return;
+  }
+
+  const todos = await fetchTodos();
+
+  const filteredTodos = todos.filter(todo =>
+    todo.id.toString() === query ||
+    todo.title.toLowerCase().includes(query)
+  );
+
+  displayTodos(filteredTodos);
+});
