@@ -10,13 +10,14 @@
 <body>
 
   <div class="widget">
-    <h2>User Data</h2>
+    <h1>User Data</h1>
     <!-- Search Area -->
     <div class="search-box">
+      
       <input 
         type="text" 
         id="searchInput" 
-        placeholder="Search by ID or Title..."
+        placeholder="Search by ID or Name..."
       >
     </div>
     <!-- Table -->
@@ -34,8 +35,18 @@
         
       </tbody>
     </table>
+    <!-- Side Popup -->
+<div id="userPopup" class="popup">
+  <div class="popup-header">
+    <span>User Details</span>
+    <button onclick="closePopup()">✖</button>
   </div>
-  <nav aria-label="Page navigation example">
+  <div class="popup-body" id="popupContent"></div>
+</div>
+<div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+  </div>
+  <!-- <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -43,7 +54,8 @@
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
-</nav>
+</nav> -->
+
  <script src="script.js"></script>
 </body>
 </html>

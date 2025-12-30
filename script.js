@@ -2,6 +2,9 @@ const API_URL = "https://jsonplaceholder.typicode.com/users/";
 
 const searchInput = document.getElementById("searchInput");
 const resultsDiv = document.getElementById("results");
+const popup = document.getElementById("userPopup");
+const popupContent = document.getElementById("popupContent");
+const overlay = document.getElementById("overlay");
 
 let allUsers = [];
 
@@ -35,6 +38,9 @@ function displayUsers(users) {
       <td>${user.name}</td>
       <td>${user.email}</td>
       <td>${user.phone}</td>
+      <td style="text-align:center">
+        <button class="view-btn" onclick="openPopup(${user.id})">View</button>
+      </td>
     `;
     resultsDiv.appendChild(row);
   });
@@ -62,5 +68,36 @@ searchInput.addEventListener("input", () => {
   }
   displayUsers(filteredUsers);
 });
+
+
+//popup
+function openPopup(id) {
+  const user = allUsers.find(u => u.id === id);
+
+  popupContent.innerHTML = `
+    <h3>${user.name}</h3>
+    <p><strong>Username:</strong> ${user.username}</p>
+    <p><strong>Email:</strong> ${user.email}</p>
+    <p><strong>Website:</strong> ${user.website}</p>
+
+    <h4>Address</h4>
+    <p>
+      ${user.address.street}, ${user.address.suite}<br>
+      ${user.address.city} - ${user.address.zipcode}
+    </p>
+
+    <h4>Company</h4>
+    <p>${user.company.name}</p>
+  `;
+
+  popup.classList.add("show");
+  overlay.classList.add("show");
+}
+
+// Close popup
+function closePopup() {
+  popup.classList.remove("show");
+  overlay.classList.remove("show");
+}
 
 loadUsers();
